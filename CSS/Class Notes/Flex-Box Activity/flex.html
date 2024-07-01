@@ -5,33 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .flex-container {
-      /* code goes here.  practice row and column, justify-content, aligns items flex-direction gap on each setting*/
-
-          background-color: DodgerBlue;
-        }
+       
         
-        .flex-container > div {
-          background-color: silver;
-          margin: 10px;
+        .container {
+           /* code goes here.  practice row and column, justify-content, aligns items flex-direction gap on each setting*/
+          
+          height: 300px;
+          border: 1px solid black;
+        }
+        .item {
+          background-color: lightblue;
           padding: 20px;
-          font-size: 30px;
+          margin: 10px;
+          text-align: center;
         }
         </style>
         </head>
         <body>
-        
-        <h1>Create a Flex Container</h1>
-        
-        <div class="flex-container">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>  
-        </div>
-        
-        <p>A Flexible Layout must have a parent element with the <em>display</em> property set to <em>flex</em>.</p>
-        
-        <p>Direct child elements(s) of the flexible container automatically becomes flexible items.</p>
-        
+          <div class="container">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+          </div>
         </body>
         </html>
