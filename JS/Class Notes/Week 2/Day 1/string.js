@@ -36,3 +36,24 @@
 let js="Javascript";
 ////////0123456789///
 
+
+
+///////////////////////////// Changing Data Type (Casting)////////////////////////////////
+// Casting: Converting one data type to another data type. We use parseInt(), parseFloat(), Number(), + sign, str() When we do arithmetic operations string numbers should be first converted to integer or float if not it returns an error.
+// /////////////////////////////////String to Int//
+// parseInt()
+// Number()
+// Plus sign(+)
+
+
+
+
+// ////////////////////////////////String to Float//
+// parseFloat()
+// Number()
+// Plus sign(+)
+
+
+
+// //////////////////////////////////Float to Int//
+// parseInt()
