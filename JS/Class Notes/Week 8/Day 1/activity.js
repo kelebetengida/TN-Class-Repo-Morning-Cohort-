@@ -1,51 +1,105 @@
-
-// Create an Animal class. The class will have name, age, color, legs properties and create different methods
-
-
-
-
-// Create a Dog and Cat child class from the Animal Class.
-
-
-
-
-
-// Override the method you create in Animal class
-
-
-
-
-
-// Let's try to develop a program which calculate measure of central tendency of a sample(mean, median, mode) and measure of variability(range, variance, standard deviation). In addition to those measures find the min, max, count, percentile, and frequency distribution of the sample. You can create a class called Statistics and create all the functions which do statistical calculations as method for the Statistics class. Check the output below.
-// ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
-
-// console.log('Count:', statistics.count()) // 25
-// console.log('Sum: ', statistics.sum()) // 744
-// console.log('Min: ', statistics.min()) // 24
-// console.log('Max: ', statistics.max()) // 38
-// console.log('Range: ', statistics.range() // 14
-// console.log('Mean: ', statistics.mean()) // 30
-// console.log('Median: ',statistics.median()) // 29
-// console.log('Mode: ', statistics.mode()) // {'mode': 26, 'count': 5}
-// console.log('Variance: ',statistics.var()) // 17.5
-// console.log('Standard Deviation: ', statistics.std()) // 4.2
-// console.log('Variance: ',statistics.var()) // 17.5
-// console.log('Frequency Distribution: ',statistics.freqDist()) // [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), (8.0, 34), (8.0, 33), (8.0, 31), (8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
-////////// you output should look like this
-        // console.log(statistics.describe())
-        // Count: 25
-        // Sum:  744
-        // Min:  24
-        // Max:  38
-        // Range:  14
-        // Mean:  30
-        // Median:  29
-        // Mode:  (26, 5)
-        // Variance:  17.5
-        // Standard Deviation:  4.2
-        // Frequency Distribution: [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), (8.0, 34), (8.0, 33), (8.0, 31), (8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
-
-
+class Statistics {
+    constructor(sample) {
+      this.sample = sample;
+    }
+  
+    count() {
+      return this.sample.length;
+    }
+  
+    sum() {
+      return this.sample.reduce((acc, curr) => acc + curr, 0);
+    }
+  
+    min() {
+      return Math.min(...this.sample);
+    }
+  
+    max() {
+      return Math.max(...this.sample);
+    }
+  
+    range() {
+      return this.max() - this.min();
+    }
+  
+    mean() {
+      return this.sum() / this.count();
+    }
+  
+    median() {
+      const sorted = [...this.sample].sort((a, b) => a - b);
+      const mid = Math.floor(sorted.length / 2);
+      return sorted.length % 2 === 0
+        ? (sorted[mid - 1] + sorted[mid]) / 2
+        : sorted[mid];
+    }
+  
+    mode() {
+      const freq = {};
+      this.sample.forEach((num) => {
+        freq[num] = (freq[num] || 0) + 1;
+      });
+      let maxCount = 0;
+      let mode = null;
+      for (const num in freq) {
+        if (freq[num] > maxCount) {
+          maxCount = freq[num];
+          mode = num;
+        }
+      }
+      return { mode: Number(mode), count: maxCount };
+    }
+  
+    variance() {
+      const mean = this.mean();
+      const squareDiffs = this.sample.map((num) => Math.pow(num - mean, 2));
+      return squareDiffs.reduce((acc, curr) => acc + curr, 0) / this.count();
+    }
+  
+    std() {
+      return Math.sqrt(this.variance());
+    }
+  
+    freqDist() {
+      const freq = {};
+      this.sample.forEach((num) => {
+        freq[num] = (freq[num] || 0) + 1;
+      });
+      const dist = [];
+      for (const num in freq) {
+        dist.push([((freq[num] / this.count()) * 100).toFixed(1), Number(num)]);
+      }
+      return dist.sort((a, b) => b[0] - a[0]);
+    }
+  
+    describe() {
+      return `
+      Count: ${this.count()}
+      Sum: ${this.sum()}
+      Min: ${this.min()}
+      Max: ${this.max()}
+      Range: ${this.range()}
+      Mean: ${this.mean().toFixed(1)}
+      Median: ${this.median()}
+      Mode: ${this.mode().mode}, Count: ${this.mode().count}
+      Variance: ${this.variance().toFixed(1)}
+      Standard Deviation: ${this.std().toFixed(1)}
+      Frequency Distribution: ${JSON.stringify(this.freqDist())}
+      `;
+    }
+  }
+  
+  // Example usage:
+  const ages = [
+    31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37,
+    31, 34, 24, 33, 29, 26,
+  ];
+  
+  const statistics = new Statistics(ages);
+  
+  console.log(statistics.describe());
+  
 
 
 
