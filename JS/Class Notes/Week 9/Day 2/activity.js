@@ -39,3 +39,7 @@
 
 
 // Set text content, id and class to each paragraph
+
+
+
+
