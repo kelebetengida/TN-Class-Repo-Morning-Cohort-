@@ -4,30 +4,83 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 //JSX- WHen we are trying to render a simple html jsx element Just store it in a variable. 
-const title = <h1>Welcome to React</h1>
 
-const instructor = <h1>Hello, Kelebet Here your instructor</h1>
+//style My header
+const headerStyle={
+  backgroundColor:"yellow",
+  padding:20,
+  lineHeight:3,
+  fontFamily:"Helvetica "
+}
 
-const tA = <h1>Hello, Chris is here to assist you!</h1>
+const mainStyle = {
+  color: "blue",
+  border: "solid",
+  borderWidth: 3,
+  backgroundColor: "purple",
+  textAlign: "center",
+  fontFamily: "comic sans ms",
+  }
+const listStyle = {
+  listStyle: "none"
+}
 
-const student = <h1>This react stuff is tough!</h1>
 
-const scottL = <h2>Hello Im Scott, a student</h2>;
+const footerStyle = {
+  backgroundColor: "darkblue",
+  padding: 10,
+  color: "lightblue",
+  textAlign: "center",
+  border: 5,
+  borderStyle: "bold",
+  fontFamily:"arial",
+  fontSize: 10
+}
 
-const michael = <h1>I am happy to Be here!</h1>
+// One component the header component
+const Header = () => {
+  return (
+    <header style={headerStyle}>
+      <h1>Welcome to React</h1>
+      <h2>This is the first JSX aplication we will make</h2>
+      <h4>Instructor: Kelebet Engida</h4>
+      <p>10/22/2024</p>
+    </header>
+  )
+}
+
+const Main = () => {
+  return (
+    <main style = {mainStyle}>
+    <h1>The primary languages needed for building a website:</h1>
+      <ul style = {listStyle}>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </main>
+  )
+}
+
+const Footer = () => {
+  return (
+    <footer style={footerStyle}>
+      <h5>Mr E</h5>
+      <h4>October 2024</h4>
+    </footer>
+  )
+}
 //this is the best way to write our JSX element, as component 
 const App = () => {
   return (
     <div>
-      {title}
-      {scottL}
-      {student}
-      {michael}
-      {tA}
+      <Header/>
+      <Main/>
+      <Footer/>
     </div>
   )
 }
 //This root variable is refering to the root elemet in the index flie
 const root = document.getElementById("root")
 //WHere ReactDOM uses the render method which takes the code that needs to be rendered and where it will be rendered
-ReactDOM.render(<App/>, root)
+ReactDOM.render(<App />, root)
