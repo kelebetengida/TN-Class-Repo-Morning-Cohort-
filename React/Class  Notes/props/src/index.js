@@ -12,22 +12,30 @@ import ReactDOM from "react-dom"
 //   age: 43
 // }
 
+// const name=["kevin", "scott", "Chris", "Michale", "kelebet"]
+// //breaking down something, the array data 
+
+// const [first, secound, third, fourth, fifth]=name
+
+// console.log(third)//"chris"
+// console.log(first)//"kevin"
+
 const introstyle={
   backgroundColor:"yellow",
 
 }
-const StudentIntroduction = (props) => {
+const StudentIntroduction = ({firstName, lastName, age, myComment, myStatement, statment, missionStatement}) => {
   return (
     <div style={introstyle}>
-      <h2>Hello! My name is {props.firstName} {props.lastName} and I am {props.age} years old.</h2>
-      <h4>{props.missionStatement} {props.statment}</h4>
-      <h4>{props.myStatement}{props.myComment}</h4>
+      <h2>Hello! My name is {firstName} {lastName} and I am {age} years old.</h2>
+      <h4>{missionStatement} {statment}</h4>
+      <h4>{myStatement}{myComment}</h4>
     </div>
   );
 }
 
-const OfferedSkills = (props) => {
-  const formatedSkills=props.skillsList.map((skill)=><li>{skill}</li>);
+const OfferedSkills = ({skillsList}) => {
+  const formatedSkills=skillsList.map((skill, i)=><li key={i}>{skill}</li>);
     return(
         <div>
           <h2>The skills offered in this class are:</h2>
@@ -57,4 +65,4 @@ const ClassInfo = () => {
 }
 
 const root = document.getElementById("root")
-ReactDOM.render(<ClassInfo />, root)
+ReactDOM.render(<ClassInfo/>, root)
