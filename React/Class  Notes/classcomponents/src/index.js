@@ -26,7 +26,6 @@ class StudentIntroduction extends React.Component {
 //Each student create their class component with their firstname and last name 
 
 class Students extends React.Component {
-
 secondStudent = {
   firstName: "Michael",
   lastName: "Mahone"
@@ -46,12 +45,10 @@ render () {
 }
 
 class Scottie extends React.Component {
-  
   thirdStudent = {
     firstName: 'Scott',
     lastName: 'Lewis'
-  }
-  
+  }  
   render () {
     return (
       <div>
@@ -60,7 +57,6 @@ class Scottie extends React.Component {
       </div>
     );
   }
-  
 }
 
 
