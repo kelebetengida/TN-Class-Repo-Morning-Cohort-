@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import axios from "axios";
 
 class App extends React.Component {
+  //This is where you store the data & retrive the data
   state = {
     data: [],
   };
 
 
   componentDidMount() {
+    //url -https protocol, an adress,, a resource(endpoint)
     const url = "https://jsonplaceholder.typicode.com/posts";
 
     //this is the post that we will create 
@@ -17,11 +19,11 @@ class App extends React.Component {
       title:"Welcome to the 1001th post",
       detail:"Its a post practice "
     }
-
+    //create
     axios.post(url, postData).then((response)=>this.setState((prevState)=>({data:[...prevState.data, response.data]}))).catch((err) => {
       console.error("Error fetching data:", err);
     });
-
+    //read 
     axios.get(url).then((response) => this.setState({ data: response.data })).catch((err) => {
       console.error("Error fetching data:", err);
     });
